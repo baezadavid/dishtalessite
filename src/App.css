@@ -2,13 +2,9 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-h1,h2,h3 .card-body>.card-title {
-  font-family: "Acme", serif;
-}
-
 .card-title {
-    font-weight: 500;
-    font-size: 1.25rem;
+  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 h2 {
@@ -44,6 +40,6 @@ h2 {
 }
 
 .navbar-dark {
-  background-color:rgb(238, 160, 58);
+  background-color:gray;
   margin-bottom: 40px;
 }

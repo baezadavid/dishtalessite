@@ -21,20 +21,9 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <NavLink className="nav-link" to="/home">
-                                    <img src="/assets/images/Dish-tales-02.png" height="150" width="180" alt="Dish Tales logo Logo"/>
-                                </NavLink>
-                            </div>
-                        </div>
-                    </div>
-                </Jumbotron>
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
-                        {/*<NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="Dish Tales logo Logo" /></NavbarBrand>*/}
+                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="Dish Tales logo Logo" /></NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
@@ -44,8 +33,8 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/blog">
-                                        <i className="fa fa-list fa-lg" /> Blog
+                                    <NavLink className="nav-link" to="/posts">
+                                        <i className="fa fa-list fa-lg" /> Posts
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
