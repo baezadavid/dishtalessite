@@ -33,13 +33,18 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/posts">
-                                        <i className="fa fa-list fa-lg" /> Posts
+                                    <NavLink className="nav-link" to="/blog">
+                                        <i className="fa fa-blog fa-lg" /> Blog
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
                                         <i className="fa fa-address-card fa-lg" /> Contact Us
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="nav-link" to="/postsubmit">
+                                        <i className="far fa-plus-square fa-lg" /> Submit a Post
                                     </NavLink>
                                 </NavItem>
                             </Nav>
