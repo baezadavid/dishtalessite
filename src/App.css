@@ -33,12 +33,38 @@ h2 {
 }
 
 .jumbotron {
-  margin: 0;
-  padding: 30px;
+
+  position: relative;
+   overflow: hidden;
+   height: 400px;
+   margin: 0;
+  /*padding: 30px;
   background-color: gray;
-  color: white;
+  color: white;*/
 }
 
+#video-background{ 
+  position: absolute;
+  height: auto;
+  width: auto;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /*left: 50%;
+  top: 50%;*/
+  -webkit-transform: translate3d(-20%, -60%, 0);
+  transform: translate3d(-20%, -60%, 0);
+  z-index: 1;
+}
+
+.logo {
+  position: relative;
+  color: #ffffff;
+  z-index: 2; 
+}
 .jumbotron h2 {
   color: #CEC8FF;
 }
@@ -46,4 +72,20 @@ h2 {
 .navbar-dark {
   background-color:rgb(238, 160, 58);
   margin-bottom: 40px;
+}
+.search-form {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.search-bar {
+  width: 50%;
+  padding: 10px;
+}
+.search-button {
+  background: rgb(219, 133, 21);
+  padding: 10px 20px;
+  color: white;
 }

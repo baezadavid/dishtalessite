@@ -21,12 +21,15 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid>
-                    <div className="container">
+                <Jumbotron className="jumbotron" fluid>
+                    <video width="400" id="video-background" autoplay muted loop>
+                       <source src="/assets/videos/Video-Jumbotron.mp4" type="video/mp4"/>
+                    </video>
+                    <div className="container logo">
                         <div className="row">
                             <div className="col">
                                 <NavLink className="nav-link" to="/home">
-                                    <img src="/assets/images/Dish-tales-02.png" height="150" width="180" alt="Dish Tales logo Logo"/>
+                                    <img src="/assets/images/Dish-tales-02.png" height="150" width="180" alt="Dish Tales Logo"/>
                                 </NavLink>
                             </div>
                         </div>
@@ -35,7 +38,7 @@ class Header extends Component {
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
                         {/*<NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="Dish Tales logo Logo" /></NavbarBrand>*/}
-                        <NavbarToggler onClick={this.toggleNav} />
+                        <NavbarToggler onClick={this.toggleNav} className="ml-auto"/>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
