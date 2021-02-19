@@ -22,7 +22,7 @@ class Header extends Component {
         return (
             <React.Fragment>
                 <Jumbotron className="jumbotron" fluid>
-                    <video width="400" id="video-background" autoplay muted loop>
+                    <video width="400" id="video-background" autoPlay muted loop>
                        <source src="/assets/videos/Video-Jumbotron.mp4" type="video/mp4"/>
                     </video>
                     <div className="container logo">
