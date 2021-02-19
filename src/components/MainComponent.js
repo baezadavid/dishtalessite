@@ -64,6 +64,7 @@ class Main extends Component {
 
         return (
             <div>
+                <div className="container"><h1>Hello</h1></div>
                 <Header />
                 <Switch>
                     <Route path="/home" component={HomePage} />
