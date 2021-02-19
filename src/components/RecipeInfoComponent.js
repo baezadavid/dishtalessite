@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
                  <Card>
                     <CardImg top src={recipe.image} alt={recipe.name} />
                     <CardBody>
-                        <CardTitle>{recipe.name}</CardTitle>
+                        <CardTitle><h4><strong>{recipe.name}</strong></h4></CardTitle>
                         <CardText><strong>Servings:</strong> {recipe.servings} <br /><strong>Ingredients:</strong> <br/> {recipe.ingredients}</CardText>
                     </CardBody>
                 </Card>

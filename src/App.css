@@ -33,17 +33,71 @@ h2 {
 }
 
 .jumbotron {
-  margin: 0;
-  padding: 30px;
-  background-color: gray;
-  color: white;
+
+  position: relative;
+   overflow: hidden;
+   height: 400px;
+   margin: 0;
+   padding: 30px;
+   /*background-color: gray;
+   color: white;*/
 }
 
+#video-background{ 
+  position: absolute;
+  height: auto;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 1;
+}
+
+.logo {
+  position: relative;
+  color: #ffffff;
+  z-index: 2; 
+  margin-left: 0;
+}
 .jumbotron h2 {
   color: #CEC8FF;
 }
 
 .navbar-dark {
-  background-color:rgb(238, 160, 58);
+  background-color:rgb(247, 113, 52);
   margin-bottom: 40px;
 }
+.search-form {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.search-bar {
+  width: 50%;
+  padding: 10px;
+}
+.search-button {
+  background: rgb(240, 176, 81);
+  padding: 10px 20px;
+  color: white;
+}
+/*.recipe {
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px rgb(71, 71, 71);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: white;
+  align-items: center;
+  min-width: 40%;
+}*/
