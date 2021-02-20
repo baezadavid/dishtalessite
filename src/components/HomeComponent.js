@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle} from "reactstrap";
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
 import { Link } from "react-router-dom";
 import RecipeInfo from './RecipeInfoComponent';
 
@@ -9,7 +9,7 @@ function RenderRecipeItem({recipe, onClick}) {
             <Link to={`/home/${recipe.id}`}>
                 <CardImg width="100%" src={recipe.image} alt={recipe.name} />
                 <CardImgOverlay>
-                    <CardTitle className="p-1">{recipe.name}</CardTitle>
+                    <CardTitle>{recipe.name}</CardTitle>
                 </CardImgOverlay>
             </Link>
         </Card>
