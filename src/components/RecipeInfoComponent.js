@@ -1,13 +1,13 @@
-import React, {Component} from "react";
-import { Card, CardImg, CardText, CardTitle, CardBody, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label} from 'reactstrap';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
+//import {Link} from "react-router-dom";
 //import {Control, LocalForm, Errors} from "react-redux-form";
 
 //class RecipeInfo extends Component {
 
    function RenderRecipe({recipe}) {
         return (
-            <div className="col-md-5 m-1">
+            <div className="col-md-6 p-3">
                  <Card>
                     <CardImg top src={recipe.image} alt={recipe.name} />
                     <CardBody>
@@ -22,7 +22,7 @@ import {Link} from "react-router-dom";
     function RenderDirections({directions}) {
         if(Array.isArray(directions)) {
            return (
-               <div className="col-md-5 m-1">
+               <div className="col-md-6 p-3">
                    <h4><strong>Directions</strong></h4>
                    {directions.map((direction,index) => 
                        <div key={index}>
@@ -40,7 +40,7 @@ import {Link} from "react-router-dom";
         if(props.recipe) {
             return (
                 <div className="container">
-                    <div className="row">
+                    <div className="row my-3">
                         <RenderRecipe recipe={props.recipe} />
                         {/*{this.renderRecipe(this.props.recipe)}*/}
                         <RenderDirections directions={props.recipe.directions} />     

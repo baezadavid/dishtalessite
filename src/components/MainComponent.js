@@ -6,10 +6,16 @@ import Contact from './ContactComponent';
 import { RECIPES } from '../shared/recipes';
 //import { Navbar, NavbarBrand} from "reactstrap";
 import RecipeInfo from './RecipeInfoComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { actions } from 'react-redux-form';
 import { BLOGS } from '../shared/blogs';
 import Blog from "./BlogComponent";
 import BlogInfo from "./BlogInfoComponent";
+
+const mapDispatchToProps = {
+    resetFeedbackForm: () => (actions.reset('feedbackForm'))
+}
 
 class Main extends Component {
         constructor(props) {
@@ -60,8 +66,8 @@ class Main extends Component {
                              {/*<Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} recipes={this.props.recipes} />} />*/}
                              {/*<Route path="/home/:recipeId" render={() => <RecipeWithId recipes={this.props.recipes} />} />*/}
                              <Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} />} />
+                             <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
                              <Route path="/blog/:blogId" render={(props) => <BlogWithId {...props} />} />
-                             <Route exact path="/contactus" component={Contact} />
                              <Redirect to="/home" />
                          </Switch>
                      <Footer />
@@ -95,4 +101,4 @@ class Main extends Component {
     }
 }*/
 
-export default Main;
+export default withRouter(connect(null, mapDispatchToProps)(Main));

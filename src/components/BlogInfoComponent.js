@@ -1,6 +1,5 @@
-import React, {Component} from "react";
-import { Card, CardImg, CardText, CardTitle, CardBody, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Label} from 'reactstrap';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
 
 
    function RenderBlog({blog}) {
