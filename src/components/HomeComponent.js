@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
+import { Card, CardImg, CardImgOverlay, CardTitle} from "reactstrap";
 import { Link } from "react-router-dom";
 import RecipeInfo from './RecipeInfoComponent';
 
@@ -33,10 +33,10 @@ function  Home(props) {
    // render() {
         const recipe = props.recipes.map(recipe => {
             return (
-                <div key={recipe.id} className="col-md-6 p-3">
-                    <RenderRecipeItem recipe={recipe} onClick={props.onClick} />
-                    {/*<RecipeInfo recipe={this.state.recipes.filter(recipe => recipe.id === this.state.selectedRecipe)[0]}/>*/}
-                    <RecipeInfo recipe={props.recipes.filter(recipe => recipe.id === props.selectedRecipe)[0]}/>
+                    <div key={recipe.id} className="col-md-5 m-1">
+                        <RenderRecipeItem recipe={recipe} onClick={props.onClick} />
+                        {/*<RecipeInfo recipe={this.state.recipes.filter(recipe => recipe.id === this.state.selectedRecipe)[0]}/>*/}
+                        <RecipeInfo recipe={props.recipes.filter(recipe => recipe.id === props.selectedRecipe)[0]}/>
 
                     {/*<Card onClick={() => this.props.onClick(recipe.id)}>*/}  {/*onClick={ () => this.onRecipeSelect(recipe)}*/} 
                         {/*<CardImg width="100%" src={recipe.image} alt={recipe.name} />
@@ -44,18 +44,30 @@ function  Home(props) {
                             <CardTitle>{recipe.name}</CardTitle>
                         </CardImgOverlay>
                     </Card>*/}
-                </div>
+                    </div>  
             )
         });
     
 
       return (
-        <div className="container">
-            <div className="row my-3">
-                {recipe}
-            </div>
+          <React.Fragment>
+                <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <form className="search-form">
+                                    <input className="search-bar" type="text" /> 
+                                    <button className="search-button" type="submit">Search by ingredient</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            <div className="container">
+                <div className="row">
+                    {recipe}
+                </div>
            {/*<RecipeInfo recipe={this.state.selectedRecipe}/>*/}
-        </div>
+            </div>
+        </React.Fragment>
     );
   //}
 

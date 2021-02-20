@@ -11,7 +11,7 @@ import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
                  <Card>
                     <CardImg top src={recipe.image} alt={recipe.name} />
                     <CardBody>
-                        <CardTitle>{recipe.name}</CardTitle>
+                        <CardTitle><h4><strong>{recipe.name}</strong></h4></CardTitle>
                         <CardText><strong>Servings:</strong> {recipe.servings} <br /><strong>Ingredients:</strong> <br/> {recipe.ingredients}</CardText>
                     </CardBody>
                 </Card>
@@ -43,7 +43,7 @@ import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
                     <div className="row my-3">
                         <RenderRecipe recipe={props.recipe} />
                         {/*{this.renderRecipe(this.props.recipe)}*/}
-                        <RenderDirections directions={props.recipe.directions} />     {/*Not sure if I should remove the recipe between props and directions */}
+                        <RenderDirections directions={props.recipe.directions} />     
                         {/*{this.renderDirections(this.props.recipe.directions)}*/}
                     </div>
                 </div>
