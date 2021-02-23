@@ -1,18 +1,25 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
 import { Link } from "react-router-dom";
 import BlogInfo from './BlogInfoComponent';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderBlogItem({blog, onClick}) {
     return (
-        <Card onClick={() => onClick(blog.id)} > 
-            <Link to={`/blog/${blog.id}`}>
-                <CardImg width="100%" src={blog.image} alt={blog.name} />
-                <CardImgOverlay>
-                    <CardTitle>{blog.name}</CardTitle>
-                </CardImgOverlay>
-            </Link>
-        </Card>
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: "scale(0.5) translateY(50%)"
+            }}>
+            <Card onClick={() => onClick(blog.id)} > 
+                <Link to={`/blog/${blog.id}`}>
+                    <CardImg width="100%" src={blog.image} alt={blog.name} />
+                    <CardImgOverlay>
+                        <CardTitle>{blog.name}</CardTitle>
+                    </CardImgOverlay>
+                </Link>
+            </Card>
+        </FadeTransform>
     )
 }
 
@@ -31,6 +38,16 @@ function  Blog(props) {
 
       return (
           <React.Fragment>
+                <div className="container">
+                <div className="row">
+                    <div className="col">
+                    <Breadcrumb>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>Blog</BreadcrumbItem>
+                        </Breadcrumb>
+                    </div>
+                </div>
+                </div>
                 <div className="container">
                         <div className="row">
                             <div className="col">

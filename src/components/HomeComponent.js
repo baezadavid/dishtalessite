@@ -2,18 +2,25 @@ import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle} from "reactstrap";
 import { Link } from "react-router-dom";
 import RecipeInfo from './RecipeInfoComponent';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderRecipeItem({recipe, onClick}) {
     return (
-        <Card onClick={() => onClick(recipe.id)}  /*onClick={ () => this.onRecipeSelect(recipe)}*/ >
-            <Link to={`/home/${recipe.id}`}>
-                <CardImg width="100%" src={recipe.image} alt={recipe.name} />
-                <CardImgOverlay>
-                    <CardTitle>{recipe.name}</CardTitle>
-                </CardImgOverlay>
-            </Link>
-        </Card>
-    )
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: "scale(0.5) translateY(50%)"
+            }}>
+                <Card onClick={() => onClick(recipe.id)}  /*onClick={ () => this.onRecipeSelect(recipe)}*/ >
+                    <Link to={`/home/${recipe.id}`}>
+                        <CardImg width="100%" src={recipe.image} alt={recipe.name} />
+                        <CardImgOverlay>
+                            <CardTitle>{recipe.name}</CardTitle>
+                        </CardImgOverlay>
+                    </Link>
+                </Card>
+        </FadeTransform>
+    );
 }
 
 

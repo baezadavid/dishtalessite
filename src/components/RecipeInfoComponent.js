@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
+import { FadeTransform } from 'react-animation-components';
 //import {Link} from "react-router-dom";
 //import {Control, LocalForm, Errors} from "react-redux-form";
 
@@ -8,13 +9,19 @@ import { Card, CardImg, CardText, CardTitle, CardBody} from 'reactstrap';
    function RenderRecipe({recipe}) {
         return (
             <div className="col-md-6 p-3">
-                 <Card>
-                    <CardImg top src={recipe.image} alt={recipe.name} />
-                    <CardBody>
-                        <CardTitle><h4><strong>{recipe.name}</strong></h4></CardTitle>
-                        <CardText><strong>Servings:</strong> {recipe.servings} <br /><strong>Ingredients:</strong> <br/> {recipe.ingredients}</CardText>
-                    </CardBody>
-                </Card>
+                <FadeTransform
+                    in
+                    transformProps={{
+                        exitTransform: "scale(0.5) translateY(50%)"
+                    }}>
+                    <Card>
+                        <CardImg top src={recipe.image} alt={recipe.name} />
+                        <CardBody>
+                            <CardTitle><h4><strong>{recipe.name}</strong></h4></CardTitle>
+                            <CardText><strong>Servings:</strong> {recipe.servings} <br /><strong>Ingredients:</strong> <br/> {recipe.ingredients}</CardText>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>
         )
     }
