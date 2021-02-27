@@ -50,7 +50,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/postsubmit">
-                                        <i className="far fa-plus-square fa-lg" /> Submit a Post
+                                        <i className="fa fa-pencil fa-lg" /> Submit a Post
                                     </NavLink>
                                 </NavItem>
                             </Nav>
