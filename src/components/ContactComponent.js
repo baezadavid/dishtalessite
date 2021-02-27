@@ -50,12 +50,12 @@ class Contact extends Component {
                             <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                         </Breadcrumb>
                     </div>
-                    </div>
-                    <div className="row">
+                </div>
+                <div className="row">
                         <div className="col">
                         <h2>Contact Us</h2>
                         </div>
-                    </div>
+                </div>
                 
 
                 <div className="row row-content">
