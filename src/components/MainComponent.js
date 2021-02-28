@@ -3,6 +3,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
+import Postsubmit from './PostsubmitComponent';
 import { RECIPES } from '../shared/recipes';
 //import { Navbar, NavbarBrand} from "reactstrap";
 import RecipeInfo from './RecipeInfoComponent';
@@ -15,7 +16,8 @@ import BlogInfo from "./BlogInfoComponent";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapDispatchToProps = {
-    resetFeedbackForm: () => (actions.reset('feedbackForm'))
+    resetFeedbackForm: () => (actions.reset('feedbackForm')),
+    resetRecipeForm: () => (actions.reset('recipeForm'))
 }
 
 class Main extends Component {
@@ -70,7 +72,7 @@ class Main extends Component {
                                     {/*<Route path="/home/:recipeId" render={() => <RecipeWithId recipes={this.props.recipes} />} />*/}
                                     <Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} />} />
                                     <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-                                    <Route path="/blog/:blogId" render={(props) => <BlogWithId {...props} />} />
+                                    <Route path="/postsubmit" render={() => <Postsubmit resetRecipeForm={this.props.resetRecipeForm} />} />
                                     <Redirect to="/home" />
                                 </Switch>
                              </CSSTransition>

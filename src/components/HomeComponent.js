@@ -15,7 +15,7 @@ function RenderRecipeItem({recipe, onClick}) {
                     <Link to={`/home/${recipe.id}`}>
                         <CardImg width="100%" src={recipe.image} alt={recipe.name} />
                         <CardImgOverlay>
-                            <CardTitle>{recipe.name}</CardTitle>
+                            <CardTitle className="p-2">{recipe.name}</CardTitle>
                         </CardImgOverlay>
                     </Link>
                 </Card>
@@ -40,7 +40,7 @@ function  Home(props) {
    // render() {
         const recipe = props.recipes.map(recipe => {
             return (
-                    <div key={recipe.id} className="col-md-5 m-1">
+                    <div key={recipe.id} className="col-md-6 p-2">
                         <RenderRecipeItem recipe={recipe} onClick={props.onClick} />
                         {/*<RecipeInfo recipe={this.state.recipes.filter(recipe => recipe.id === this.state.selectedRecipe)[0]}/>*/}
                         <RecipeInfo recipe={props.recipes.filter(recipe => recipe.id === props.selectedRecipe)[0]}/>
