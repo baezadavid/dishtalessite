@@ -3,7 +3,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-import Postsubmit from "./PostsubmitComponent";
+import Postsubmit from './PostsubmitComponent';
 import { RECIPES } from '../shared/recipes';
 //import { Navbar, NavbarBrand} from "reactstrap";
 import RecipeInfo from './RecipeInfoComponent';
@@ -23,7 +23,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 }*/
 
 const mapDispatchToProps = {
-    resetFeedbackForm: () => (actions.reset('feedbackForm'))
+    resetFeedbackForm: () => (actions.reset('feedbackForm')),
+    resetRecipeForm: () => (actions.reset('recipeForm'))
 }
 
 class Main extends Component {

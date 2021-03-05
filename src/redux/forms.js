@@ -7,3 +7,14 @@ export const InitialFeedback = {
     contactType: 'Phone',
     feedback: ''
 }
+
+export const NewRecipePost = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    cookingTime: '',
+    countryOrigin: '',
+    recipeIngredients: '',
+    recipeDirections: ''
+
+}
