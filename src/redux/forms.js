@@ -8,12 +8,13 @@ export const InitialFeedback = {
     feedback: ''
 }
 
-export const NewRecipeFeedback = {
+export const NewRecipePost = {
     firstName: '',
     lastName: '',
-    phoneNum: '',
     email: '',
-    agree: false,
-    contactType: 'Phone',
-    feedback: ''
+    cookingTime: '',
+    countryOrigin: '',
+    recipeIngredients: '',
+    recipeDirections: ''
+
 }
