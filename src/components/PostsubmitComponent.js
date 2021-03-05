@@ -134,7 +134,9 @@ class Postsubmit extends Component {
                                         <Control.file 
                                             model=".image" 
                                             id="image" 
-                                            name="image" 
+                                            name="image"
+                                            type='file'
+                                            accept='.jpg, .png, .jpeg' 
                                             className="form-control"
                                         />
                                     </Col>
