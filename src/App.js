@@ -24,12 +24,13 @@ class App extends Component {
                     <div className="App">
 
                         <Main />
-                    {/* <Navbar dark color="primary">
-                        <div className="container">
-                            <NavbarBrand href="/">Dish Tales</NavbarBrand>
-                        </div>
-                    </Navbar>
-                    <Home recipes={this.state.recipes}/>*/}
+
+                                    {/* <Navbar dark color="primary">
+                                        <div className="container">
+                                            <NavbarBrand href="/">Dish Tales</NavbarBrand>
+                                        </div>
+                                    </Navbar>
+                                    <Home recipes={this.state.recipes}/>*/}
                     </div>
                 </BrowserRouter>
             </Provider>
