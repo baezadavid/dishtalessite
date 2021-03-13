@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { Breadcrumb, BreadcrumbItem, Label, Col, Row } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Card, Button, Alert } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
+
 
 
 
@@ -24,7 +27,9 @@ class Postsubmit extends Component {
                 firstName: false,
                 lastName: false,
                 description: false
-            }
+            },
+            error: "",
+            setError: ""
         };
 
         // this.onChange = this.onChange.bind(this)
@@ -35,6 +40,19 @@ class Postsubmit extends Component {
         console.log("Current state is: " + JSON.stringify(values));
         alert("Current state is: " + JSON.stringify(values));
         this.props.postBlog(this.props.blogId, values.name, values.country, values.image, values.description);
+    }
+
+    //const[error, setError] = useState("")-I can't use Hooks with class components, did I add this correctly to the state?
+
+    async function handleLogout() {
+         setError("")
+
+        {/*try {
+           await logout()
+           history.push("./login")
+         } catch {
+           setError("Failed to log out")
+           }*/}
     }
 
     render () {
@@ -162,6 +180,19 @@ class Postsubmit extends Component {
                 </LocalForm>
               </div>
             </div>
+
+            <Card>
+              <Card.Body>
+                <h2 className="text-center mb-4">Profile</h2>
+                {error && <Alert variant="danger">{error}</Alert>}
+              </Card.Body>
+            </Card>
+             
+             <div className="w-100 text-center mt-2">
+               <Button variant="link" onClick={handleLogout}>Log Out</Button>
+             </div>
+
+
           </div>
         );
     }

@@ -7,13 +7,17 @@ import Postsubmit from './PostsubmitComponent';
 import { RECIPES } from '../shared/recipes';
 //import { Navbar, NavbarBrand} from "reactstrap";
 import RecipeInfo from './RecipeInfoComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
 import { BLOGS } from '../shared/blogs';
 import Blog from "./BlogComponent";
 import BlogInfo from "./BlogInfoComponent";
 import Signup from "./SignupComponent";
+import Login from "./Login";
+import { AuthProvider } from "../contexts/AuthContext";
+import PrivateRoute from "./PrivateRoute";
+import ForgotPassword from "./ForgotPassword";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
@@ -76,7 +80,7 @@ class Main extends Component {
                     key={this.props.location.key}
                     classNames="page"
                     timeout={300}
-                >
+                  >
                     <Switch>
                       <Route
                         exact
@@ -120,11 +124,24 @@ class Main extends Component {
                         path="/blog/:blogId"
                         render={(props) => <BlogWithId {...props} />}
                       />
-                      <Route
-                        path="/postsubmit"
-                        render={(props) => <Postsubmit />}
-                      />
-                      <Route path="/signup" component={<Signup />} />
+                      {/*Not sure if I should wrap all routes in Main with Router and AuthProvider or not */}
+                      <Router>
+                        <AuthProvider>
+                          <Switch>
+                            <PrivateRoute
+                              exact
+                              path="/postsubmit"
+                              render={(props) => <Postsubmit />}
+                            />
+                            <Route path="/signup" component={Signup} />
+                            <Route path="/login" component={Login} />
+                            <Route
+                              path="/forgot-password"
+                              component={ForgotPassword}
+                            />
+                          </Switch>
+                        </AuthProvider>
+                      </Router>
 
                       <Redirect to="/home" />
                     </Switch>
