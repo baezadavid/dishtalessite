@@ -11,15 +11,14 @@ import { Switch, Route, Redirect, withRouter, BrowserRouter as Router } from 're
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
 import { BLOGS } from '../shared/blogs';
-import Blog from "./BlogComponent";
-import BlogInfo from "./BlogInfoComponent";
-import Signup from "./SignupComponent";
-import Login from "./Login";
-import { AuthProvider } from "../contexts/AuthContext";
-import PrivateRoute from "./PrivateRoute";
-import ForgotPassword from "./ForgotPassword";
+import Blog from './BlogComponent';
+import BlogInfo from './BlogInfoComponent';
+import Signup from './SignupComponent';
+import Login from './Login';
+import { AuthProvider } from '../contexts/AuthContext';
+import PrivateRoute from './PrivateRoute';
+import ForgotPassword from './ForgotPassword';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
 
 /*const mapStateToProps = state => {
     return {
@@ -29,131 +28,101 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 }*/
 
 const mapDispatchToProps = {
-    resetFeedbackForm: () => (actions.reset('feedbackForm')),
-    resetRecipeForm: () => (actions.reset('recipeForm'))
-}
+	resetFeedbackForm: () => actions.reset('feedbackForm'),
+	resetRecipeForm: () => actions.reset('recipeForm')
+};
 
 class Main extends Component {
-        constructor(props) {
-            super(props);
-            this.state ={
-                recipes: RECIPES,
-                selectedRecipe: null,
-                blogs: BLOGS,
-                selectedBlog: null
-            };
-        }
+	constructor(props) {
+		super(props);
+		this.state = {
+			recipes: RECIPES,
+			selectedRecipe: null,
+			blogs: BLOGS,
+			selectedBlog: null
+		};
+	}
 
-        onRecipeSelect(recipeId) {
-            this.setState({selectedRecipe: recipeId});
-        }
+	onRecipeSelect(recipeId) {
+		this.setState({ selectedRecipe: recipeId });
+	}
 
-        onBlogSelect(blogId) {
-            this.setState({selectedBlog: blogId});
-        }
+	onBlogSelect(blogId) {
+		this.setState({ selectedBlog: blogId });
+	}
 
-       
+	render() {
+		const RecipeWithId = ({ match }) => {
+			console.log(this.state.recipes);
+			return (
+				<RecipeInfo recipe={this.state.recipes.filter((recipe) => recipe.id === +match.params.recipeId)[0]} />
+				/*directions={this.state.directions.filter(direction => direction.recipeId === +match.params.recipeId)}*/
+			);
+		};
 
-        render() {
+		const BlogWithId = ({ match }) => {
+			console.log(this.state.blogs);
+			return <BlogInfo blog={this.state.blogs.filter((blog) => blog.id === +match.params.blogId)[0]} />;
+		};
 
-            const RecipeWithId = ({match}) => {
-                console.log(this.state.recipes);
-                return (
-                    <RecipeInfo recipe={this.state.recipes.filter(recipe=> recipe.id === +match.params.recipeId)[0]} />
-                        /*directions={this.state.directions.filter(direction => direction.recipeId === +match.params.recipeId)}*/
-                    
-                );
-            }
+		return (
+			<div>
+				<Header />
+				<TransitionGroup>
+					<CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+						<Router>
+							<AuthProvider>
+								<Switch>
+									<Route
+										exact
+										path="/home"
+										render={() => (
+											<Home
+												recipes={this.state.recipes}
+												onClick={(recipeId) => this.onRecipeSelect(recipeId)}
+											/>
+										)}
+									/>
+									<Route
+										exact
+										path="/blog"
+										render={() => (
+											<Blog
+												blogs={this.state.blogs}
+												onClick={(blogId) => this.onBlogSelect(blogId)}
+											/>
+										)}
+									/>
+									{/*<RecipeInfo recipe={this.state.recipes.filter(recipe => recipe.id === this.state.selectedRecipe)[0]}/>*/}
+									{/*<Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} recipes={this.props.recipes} />} />*/}
+									{/*<Route path="/home/:recipeId" render={() => <RecipeWithId recipes={this.props.recipes} />} />*/}
+									<Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} />} />
+									<Route
+										exact
+										path="/contactus"
+										render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />}
+									/>
+									<Route path="/blog/:blogId" render={(props) => <BlogWithId {...props} />} />
+									{/*Not sure if I should wrap all routes in Main with Router and AuthProvider or not */}
 
-            const BlogWithId = ({match}) => {
-                console.log(this.state.blogs);
-                return (
-                    <BlogInfo blog={this.state.blogs.filter(blog => blog.id === +match.params.blogId)[0]} />
-                );
-            }
+									<PrivateRoute exact path="/postsubmit" component={Postsubmit} />
+									<Route path="/signup" component={Signup} />
+									<Route path="/login" component={Login} />
+									<Route path="/forgot-password" component={ForgotPassword} />
 
-            return (
-              <div>
-                <Header />
-                <TransitionGroup>
-                  <CSSTransition
-                    key={this.props.location.key}
-                    classNames="page"
-                    timeout={300}
-                  >
-                    <Switch>
-                      <Route
-                        exact
-                        path="/home"
-                        render={() => (
-                          <Home
-                            recipes={this.state.recipes}
-                            onClick={(recipeId) =>
-                              this.onRecipeSelect(recipeId)
-                            }
-                          />
-                        )}
-                      />
-                      <Route
-                        exact
-                        path="/blog"
-                        render={() => (
-                          <Blog
-                            blogs={this.state.blogs}
-                            onClick={(blogId) => this.onBlogSelect(blogId)}
-                          />
-                        )}
-                      />
-                      {/*<RecipeInfo recipe={this.state.recipes.filter(recipe => recipe.id === this.state.selectedRecipe)[0]}/>*/}
-                      {/*<Route path="/home/:recipeId" render={(props) => <RecipeWithId {...props} recipes={this.props.recipes} />} />*/}
-                      {/*<Route path="/home/:recipeId" render={() => <RecipeWithId recipes={this.props.recipes} />} />*/}
-                      <Route
-                        path="/home/:recipeId"
-                        render={(props) => <RecipeWithId {...props} />}
-                      />
-                      <Route
-                        exact
-                        path="/contactus"
-                        render={() => (
-                          <Contact
-                            resetFeedbackForm={this.props.resetFeedbackForm}
-                          />
-                        )}
-                      />
-                      <Route
-                        path="/blog/:blogId"
-                        render={(props) => <BlogWithId {...props} />}
-                      />
-                      {/*Not sure if I should wrap all routes in Main with Router and AuthProvider or not */}
-                      <Router>
-                        <AuthProvider>
-                          <Switch>
-                            <PrivateRoute
-                              exact
-                              path="/postsubmit"
-                              render={(props) => <Postsubmit />}
-                            />
-                            <Route path="/signup" component={Signup} />
-                            <Route path="/login" component={Login} />
-                            <Route
-                              path="/forgot-password"
-                              component={ForgotPassword}
-                            />
-                          </Switch>
-                        </AuthProvider>
-                      </Router>
+									<Redirect to="/home" />
+								</Switch>
+							</AuthProvider>
+						</Router>
+					</CSSTransition>
+				</TransitionGroup>
+				<Footer />
+			</div>
+		);
+	}
+}
 
-                      <Redirect to="/home" />
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-                <Footer />
-              </div>
-            );
-        };
-    }
-
-   /* render() {
+/* render() {
 
         const HomePage = () => {
             return (
